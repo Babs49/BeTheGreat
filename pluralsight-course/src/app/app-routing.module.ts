@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, ActivatedRouteSnapshot } from '@angular/router';
 import { EventThumbnailComponent, EventDetailsComponent, EventsListComponent, CreateEventComponent} from './events/index';
 import { Error404Component } from './errors/404.component';
 import { EventRouteActivatorService } from './events/core/event-route-activator.service';

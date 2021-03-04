@@ -22,6 +22,8 @@ export class LoginComponent {
     this.router.navigate(['events']);
   }
 
+
+
   cancel(): void {
     this.router.navigate(['events']);
   }

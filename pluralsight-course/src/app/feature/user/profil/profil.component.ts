@@ -16,8 +16,8 @@ import { AuthService } from '../core/auth.service';
 })
 export class ProfilComponent implements OnInit {
   fb: FormBuilder = new FormBuilder();
-  firstName: FormControl | undefined;
-  lastName: FormControl | undefined;
+  firstName!: FormControl;
+  lastName!: FormControl;
   profileForm: FormGroup = new FormGroup({firstName : new FormControl(), lastName : new FormControl()});
 
   constructor(private router: Router, private authService: AuthService, private formBuilder: FormBuilder) {

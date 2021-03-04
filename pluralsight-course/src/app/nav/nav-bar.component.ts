@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../feature/user/core/auth.service';
+import { MyUser } from '../feature/user/user.model';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,9 +13,14 @@ import { AuthService } from '../feature/user/core/auth.service';
   `]
 })
 export class NavBarComponent {
-  constructor(private authService: AuthService) { }
+  currentUser: MyUser;
+
+  constructor(private authService: AuthService) {
+    this.currentUser = this.authService.currentUser;
+  }
 
   isAuthenticated(): boolean {
+    this.currentUser = this.authService.currentUser;
     return this.authService.isAuthenticated();
   }
 }

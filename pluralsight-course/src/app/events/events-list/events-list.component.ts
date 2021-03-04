@@ -15,11 +15,10 @@ export class EventsListComponent implements OnInit {
 
   }
   ngOnInit(): void {
-   this.events = this.activatedRoute.snapshot.data['events'];
+   this.events = this.activatedRoute.snapshot.data.events;
   }
 
   handleThumbnailEvent(name: string): void{
     this.toastr.success(name);
-
   }
 }

@@ -14,6 +14,7 @@ import { EventRouteActivatorService } from './events/core/event-route-activator.
 import { EventService } from './events/core/event.service';
 import { EventListResolver } from './events/core/events-list-resolver.service';
 import { ToastrService } from './shared/toastr.service';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ToastrService } from './shared/toastr.service';
   EventRouteActivatorService,
   EventService,
   EventListResolver,
-  ToastrService
+  ToastrService,
+
   ],
   bootstrap: [AppComponent]
 })

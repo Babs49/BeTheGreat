@@ -7,6 +7,7 @@ import { MyUser } from '../user.model';
 
 export class AuthService {
     currentUser: MyUser;
+
     constructor(user: MyUser) {
         this.currentUser = user;
     }
@@ -18,13 +19,14 @@ export class AuthService {
             firstName: 'John',
             lastName: 'Papa',
         };
-
     }
-    updateCurrentUser(username: string, password: string): void{
-
+    updateCurrentUser(firstName: string, lastName: string): void{
+      this.currentUser.firstName = firstName;
+      this.currentUser.lastName = lastName;
     }
+
     isAuthenticated(): boolean {
-        return !!this.currentUser;
+        return !!this.currentUser.firstName;
     }
 
 
