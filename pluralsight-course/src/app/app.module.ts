@@ -4,12 +4,17 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavBarComponent } from './nav/nav-bar.component';
-import { EventsListComponent } from './events/events-list/events-list.component';
-import { EventThumbnailComponent } from './events/event-thumbnail/event-thumbnail.component';
-import { EventService } from './events/core/event.service';
-import { EventDetailsComponent } from './events/event-details/event-details.component';
-import { CreateEventComponent } from './events/create-event/create-event.component';
+import { EventThumbnailComponent, EventDetailsComponent, EventsListComponent, CreateEventComponent} from './events/index';
 import { Error404Component } from './errors/404.component';
+import { ProfilComponent } from './feature/user/profil/profil.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { UserModule } from './feature/user/user.module';
+import { AuthService } from './feature/user/core/auth.service';
+import { EventRouteActivatorService } from './events/core/event-route-activator.service';
+import { EventService } from './events/core/event.service';
+import { EventListResolver } from './events/core/events-list-resolver.service';
+import { ToastrService } from './shared/toastr.service';
+
 
 @NgModule({
   declarations: [
@@ -23,9 +28,25 @@ import { Error404Component } from './errors/404.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    UserModule
   ],
-  providers: [],
+  providers: [{provide : 'canDeactivateCreateEvent', useValue : checkDirtyState},
+  AuthService,
+  EventRouteActivatorService,
+  EventService,
+  EventListResolver,
+  ToastrService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function checkDirtyState(component: CreateEventComponent): boolean{
+if (component.isDirty){
+  return window.confirm('Evènement non sauvegardé, voulez-vous vraiment quitter ? ');
+}
+return true;
+}

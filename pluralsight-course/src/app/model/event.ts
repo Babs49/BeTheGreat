@@ -1,16 +1,27 @@
 import { Adresse } from './addresse';
 import { MySession } from './session';
-export class MyEvent {
-    id!: number;
-    name! : string;
-    date! : Date;
-    time! : Date;
-    price! : number;
-    imageUrl! : string;
-    location! : Adresse[];
-    sessions! : MySession[]
+export interface IEvent {
+    id: number;
+    name: string;
+    date: Date;
+    time: string;
+    price: number;
+    imageUrl: string;
+    location?: {
+        address: string;
+        city: string;
+        country: string;
+    };
+    onlineUrl?: string;
+    sessions: ISession[];
+}
 
-    constructor() {}
-    
-    
+export interface ISession {
+    id: number;
+    name: string;
+    presenter: string;
+    duration: number;
+    level: string;
+    abstract: string;
+    voters: string[];
 }

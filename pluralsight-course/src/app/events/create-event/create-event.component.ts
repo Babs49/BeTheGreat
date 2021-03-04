@@ -1,15 +1,33 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core'
+import { Router } from '@angular/router'
+import { EventService } from '../core/event.service';
+
 
 @Component({
-  selector: 'app-create-event',
   templateUrl: './create-event.component.html',
-  styleUrls: ['./create-event.component.scss']
+  styles: [`
+    em {float:right; color:#E05C65; padding-left:10px;}
+    .error input {background-color:#E3C3C5;}
+    .error ::-webkit-input-placeholder { color: #999; }
+    .error :-moz-placeholder { color: #999; }
+    .error ::-moz-placeholder {color: #999; }
+    .error :ms-input-placeholder { color: #999; }
+  `]
 })
-export class CreateEventComponent implements OnInit {
+export class CreateEventComponent {
+  newEvent : any;
+  isDirty:boolean = true
+  constructor(private router: Router, private eventService:EventService) {
 
-  constructor() { }
-
-  ngOnInit(): void {
   }
 
+/*   saveEvent(formValues) {
+    this.eventService.saveEvent(formValues)
+    this.isDirty = false
+    this.router.navigate(['/events'])
+  } */
+
+  cancel() {
+    this.router.navigate(['/events'])
+  }
 }
